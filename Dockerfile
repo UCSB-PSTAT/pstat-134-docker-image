@@ -3,7 +3,7 @@ FROM jupyter/scipy-notebook:latest
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 
 RUN conda update -n base conda && \
-    conda install -y -c cvxgrp cvxpy && \
+    conda install -y -c cvxgrp cvxpy cvxportfolio && \
     conda update -y numpy && \
     conda install -y quandl && \
     \
