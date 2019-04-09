@@ -19,3 +19,12 @@ RUN mkdir -p $(jupyter --data-dir)/nbextensions && \
     \
     pip install nbgitpuller && \
     jupyter serverextension enable --py nbgitpuller --sys-prefix
+
+RUN pip install rise && \
+    jupyter nbextension install rise --py --sys-prefix && \
+    jupyter nbextension enable rise --py --sys-prefix && \
+    \
+    pip install hide_code && \
+    jupyter nbextension install hide_code --py --sys-prefix && \
+    jupyter nbextension enable hide_code --py --sys-prefix && \
+    jupyter serverextension enable hide_code --py --sys-prefix
