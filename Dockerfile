@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook:latest
+FROM jupyter/scipy-notebook:7d427e7a4dde
 
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 
@@ -9,13 +9,7 @@ RUN conda update -n base conda && \
     \
     conda install -y -c anaconda python-dateutil lxml && \
     conda install -y -c conda-forge requests-oauthlib && \
-    pip install fitbit && \
+    pip install fitbit datascience okpy nbgitpuller nbinteract && \
+    pip install git+https://github.com/okpy/jassign.git && \
     \
-    pip install datascience okpy
-
-RUN mkdir -p $(jupyter --data-dir)/nbextensions && \
-    cd $(jupyter --data-dir)/nbextensions && \
-    git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding && \
-    \
-    pip install nbgitpuller && \
     jupyter serverextension enable --py nbgitpuller --sys-prefix
