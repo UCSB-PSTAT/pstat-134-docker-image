@@ -20,3 +20,5 @@ RUN apt-get update && \
     pip install gensim
     
 USER ${NB_USER}
+
+RUN pip install nltk
