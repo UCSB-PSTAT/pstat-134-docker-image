@@ -11,5 +11,12 @@ RUN conda update -n base conda && \
     conda install -y -c conda-forge requests-oauthlib && \
     pip install fitbit datascience okpy nbgitpuller nbinteract && \
     pip install git+https://github.com/okpy/jassign.git && \
-    \
     jupyter serverextension enable --py nbgitpuller --sys-prefix
+
+USER root
+  
+RUN apt-get update && \
+    apt-get install -y zip unzip && \
+    pip install gensim
+    
+USER ${NB_USER}
