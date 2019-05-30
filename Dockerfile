@@ -24,3 +24,5 @@ USER ${NB_USER}
 RUN pip install nltk
 
 RUN pip install plotly
+
+RUN pip install cufflinks
