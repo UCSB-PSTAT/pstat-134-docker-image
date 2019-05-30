@@ -22,3 +22,5 @@ RUN apt-get update && \
 USER ${NB_USER}
 
 RUN pip install nltk
+
+RUN pip install plotly
