@@ -18,19 +18,17 @@ RUN \
 USER $NB_UID
 
 RUN \
-    # RISE slides
-    pip install --pre rise && \
-    jupyter nbextension disable rise/main --sys-prefix && \
-    \
     # Notebook extensions (TOC extension)
     pip install jupyter_contrib_nbextensions && \
     jupyter contrib nbextension install --sys-prefix && \
     jupyter nbextension enable toc2/main --sys-prefix && \
     jupyter nbextension enable toggle_all_line_numbers/main --sys-prefix && \
+    jupyter nbextension enable table_beautifier/main --sys-prefix && \
     \
-    # Notebook extensions configurator (better turned off)
+    # Notebook extensions configurator (server on and interface off)
     jupyter nbextension install jupyter_nbextensions_configurator --py --sys-prefix && \
     jupyter nbextensions_configurator disable --sys-prefix && \
+    jupyter serverextension enable jupyter_nbextensions_configurator --sys-prefix && \
     \
     # vim binding
     git clone https://github.com/lambdalisue/jupyter-vim-binding \
