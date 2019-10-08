@@ -1,4 +1,4 @@
-FROM ucsb/base-notebooks:v190923-scipy
+FROM ucsb/base-notebooks:v191003-scipy
 
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 
@@ -10,7 +10,7 @@ RUN \
     ln -s /usr/local/share/yadm/yadm /usr/local/bin/yadm && \
     \
     apt-get update && \
-    apt-get install -y vim.tiny && \
+    apt-get install -y vim.tiny curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     ln -s $(which vim.tiny) /usr/local/bin/vim
