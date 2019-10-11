@@ -1,4 +1,4 @@
-FROM ucsb/base-notebooks:v191003-scipy
+FROM ucsb/base-notebooks:v191003-scipy-rstudio
 
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 
