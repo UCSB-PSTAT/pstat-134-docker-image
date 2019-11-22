@@ -30,14 +30,7 @@ RUN \
     jupyter nbextensions_configurator disable --sys-prefix && \
     jupyter serverextension enable jupyter_nbextensions_configurator --sys-prefix && \
     \
-    # vim binding
-    git clone https://github.com/lambdalisue/jupyter-vim-binding \
-        /opt/conda/share/jupyter/nbextensions/vim_binding && \
-    jupyter nbextension disable vim_binding/vim_binding --sys-prefix && \
-    \
     # jupyter lab extensions
-    jupyter labextension install jupyterlab_vim --clean && \
-    jupyter labextension disable jupyterlab_vim && \
     jupyter labextension install @jupyterlab/toc --clean && \
     \
     # remove cache
