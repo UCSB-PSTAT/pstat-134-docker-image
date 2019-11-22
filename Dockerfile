@@ -2,19 +2,6 @@ FROM ucsb/base-scipy:v191121
 
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 
-USER root
-
-RUN \
-    git clone https://github.com/TheLocehiliosan/yadm.git \
-        /usr/local/share/yadm && \
-    ln -s /usr/local/share/yadm/yadm /usr/local/bin/yadm && \
-    \
-    apt-get update && \
-    apt-get install -y vim.tiny curl && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    ln -s $(which vim.tiny) /usr/local/bin/vim
- 
 USER $NB_UID
 
 RUN \
