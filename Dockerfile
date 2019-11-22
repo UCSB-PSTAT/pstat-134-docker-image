@@ -18,6 +18,8 @@ RUN \
 USER $NB_UID
 
 RUN \
+    pip install cvxpy nltk quandl && \
+    \
     # Notebook extensions (TOC extension)
     pip install jupyter_contrib_nbextensions && \
     jupyter contrib nbextension install --sys-prefix && \
