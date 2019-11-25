@@ -23,4 +23,6 @@ RUN \
     jupyter labextension install @jupyterlab/toc --clean && \
     \
     # remove cache
-    rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn
+    rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
