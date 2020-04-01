@@ -1,28 +1,13 @@
-FROM ucsb/base-scipy:v191219
+FROM dddlab/python-notebook:v20200331-df7ed42-94fdd01b492f
 
-LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
+LABEL maintainer="Patrick Windmiller <sysadmin@pstat.ucsb.edu>"
 
-USER $NB_UID
+RUN pip install nbzip
 
-RUN \
-    pip install cvxpy nltk quandl && \
-    \
-    # Notebook extensions (TOC extension)
-    pip install jupyter_contrib_nbextensions && \
-    jupyter contrib nbextension install --sys-prefix && \
-    jupyter nbextension enable toc2/main --sys-prefix && \
-    jupyter nbextension enable toggle_all_line_numbers/main --sys-prefix && \
-    jupyter nbextension enable table_beautifier/main --sys-prefix && \
-    \
-    # Notebook extensions configurator (server on and interface off)
-    jupyter nbextension install jupyter_nbextensions_configurator --py --sys-prefix && \
-    jupyter nbextensions_configurator disable --sys-prefix && \
-    jupyter serverextension enable jupyter_nbextensions_configurator --sys-prefix && \
-    \
-    # jupyter lab extensions
-    jupyter labextension install @jupyterlab/toc --clean && \
-    \
-    # remove cache
-    rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+USER root
+
+RUN jupyter serverextension enable --py nbzip --sys-prefix && \
+\    
+    jupyter nbextension install --py nbzip && \
+\
+    jupyter nbextension enable --py nbzip
